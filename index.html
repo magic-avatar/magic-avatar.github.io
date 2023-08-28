@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>MagicAvatar: Multi-modal Avatar Generation and Animation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EDF010G6PN"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EDF010G6PN');
+
+
+  </script>
+
+  <script type="module"
+          src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="./static/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="./static/slick/slick-theme.css"/>
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+      </div>
+      <div class="container has-text-centered">
+        <h1 class="title is-1 publication-title">
+          MagicAvatar:
+        </h1>
+        <h3 class="title is-3 publication-title">
+          Multimodal Avatar Generation and Animation
+        </h3>
+        <div class="is-size-5 publication-authors">
+          <div class="author-block"><a href="http://jeff95.me/">Jianfeng Zhang</a>*, </div>
+          <div class="author-block"><a href="https://hanshuyan.github.io/">Hanshu Yan</a>*, </div>
+          <div class="author-block"><a href="https://scholar.google.com/citations?user=-4iADzMAAAAJ&hl=en">Zhongcong Xu</a>*, </div>
+          <div class="author-block"><a href="https://sites.google.com/site/jshfeng/home">Jiashi Feng</a>, </div>
+          <div class="author-block"><a href="https://scholar.google.com.sg/citations?user=8gm-CYYAAAAJ&hl=en">Jun Hao Liew</a>*<sup>+</sup> </div>
+        </div>
+
+        <div class="is-size-5 publication-authors">
+          <span class="author-block">Bytedance Inc.</span>
+          <span class="author-block">&nbsp&nbsp<sup>*</sup>Equal Contribution</span>
+          <span class="author-block">&nbsp&nbsp<sup>+</sup>Project Lead</span>
+        </div>
+
+        <div class="column has-text-centered">
+          <div class="publication-links">
+            <!-- PDF Link. -->
+            <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+            </span>
+            <span class="link-block">
+              <a href="https://github.com/magic-research/magic-avatar"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+                </a>
+            </span>
+            <span class="link-block">
+              <a href="https://youtu.be/UN7W5oKmWNA"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fab fa-youtube"></i>
+                </span>
+                <span>Video</span>
+                </a>
+            </span>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+          <iframe width="900" height="500" src="https://www.youtube.com/embed/UN7W5oKmWNA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+          <div class="is-size-6 publication-authors">
+          </div>
+      <h2 class="subtitle has-text-justified">
+        Introducing <b>MagicAvatar</b>, a multi-modal framework capable of converting various input modalities &mdash; text, video, and audio &mdash; into motion signals that subsequently generate/ animate an avatar.  
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-2, columns is-centered">Applications</h2>
+
+    <!-- Begin of text-guided avatar generation -->
+    <hr>
+    <center>
+      <h2 class="title is-4"><b style="color:#008AD7; font-weight:normal">&#x25B6 </b> Text-guided Avatar Generation</h2>
+      <p>
+        Create avatar(s) with simple text prompts.
+      </p>
+    </center>
+    <hr>
+
+    <center>
+    <table class="center">
+      <tr>
+        <td width=12.5% style="text-align:center;">Text prompt</td>
+        <td width=12.5% style="text-align:center;">Generated motion</td>
+        <td width=12.5% style="text-align:center;">Generated video</td>
+        <td width=12.5% style="text-align:center;">Text prompt</td>
+        <td width=12.5% style="text-align:center;">Generated motion</td>
+        <td width=12.5% style="text-align:center;">Generated video</td>
+      </tr>
+    </table>
+    </center>
+
+    <table class="center">
+      <tr>
+        <td width=12.5%, style="text-align:center;vertical-align:middle;font-family:'Times New Roman',serif;font-style:italic">"An astronaut, kicking, in volcano"</td>
+        <td width=25%><video muted autoplay="autoplay" loop="loop" src="assets/text-guided/sample1.mp4" style="width: 100%; height: auto;"></video></td>
+        <td width=12.5%, style="text-align:center;vertical-align:middle;font-family:'Times New Roman',serif;font-style:italic">"A rugged mountaineer, doing moonwalk, on the foot of the hill"</td>
+        <td width=25%><video muted autoplay="autoplay" loop="loop" src="assets/text-guided/sample2.mp4" style="width: 100%; height: auto;"></video></td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td width=12.5%, style="text-align:center;vertical-align:middle;font-family:'Times New Roman',serif;font-style:italic">"A brave firefighter, punching a bag, in a burning building"</td>
+        <td width=25%><video muted autoplay="autoplay" loop="loop" src="assets/text-guided/punch.mp4" style="width: 100%; height: auto;"></video></td>
+        <td width=12.5%, style="text-align:center;vertical-align:middle;font-family:'Times New Roman',serif;font-style:italic">"A female dancer, crossing arms, in a grand ballroom"</td>
+        <td width=25%><video muted autoplay="autoplay" loop="loop" src="assets/text-guided/cross_arms.mp4" style="width: 100%; height: auto;"></video></td>
+      </tr>
+    </table>
+
+    <table class="center">
+      <tr>
+        <td width=12.5%, style="text-align:center;vertical-align:middle;font-family:'Times New Roman',serif;font-style:italic">"A female astronaut, practicing yoga poses, undersea"</td>
+        <td width=25%><video muted autoplay="autoplay" loop="loop" src="assets/text-guided/yoga2.mp4" style="width: 100%; height: auto;"></video></td>
+        <td width=12.5%, style="text-align:center;vertical-align:middle;font-family:'Times New Roman',serif;font-style:italic">"A yoga practitioner, practicing yoga poses, peaceful garden view"</td>
+        <td width=25%><video muted autoplay="autoplay" loop="loop" src="assets/text-guided/yoga1.mp4" style="width: 100%; height: auto;"></video></td>
+      </tr>
+    </table>
+
+    <table class="center">
+      <tr>
+        <td width=12.5%, style="text-align:center;vertical-align:middle;font-family:'Times New Roman',serif;font-style:italic">"A group of k-pop stars, dancing, in volcano"</td>
+        <td width=25%><video muted autoplay="autoplay" loop="loop" src="assets/text-guided/mp1.mp4" style="width: 100%; height: auto;"></video></td>
+        <td width=12.5%, style="text-align:center;vertical-align:middle;font-family:'Times New Roman',serif;font-style:italic">"A group of children, dancing, in a park"</td>
+        <td width=25%><video muted autoplay="autoplay" loop="loop" src="assets/text-guided/mp2.mp4" style="width: 100%; height: auto;"></video></td>
+      </tr>
+    </table>
+
+    <hr>
+    <table>
+      <tr>
+        <td width=11.1%, style="text-align:center;vertical-align:middle;font-family:'Times New Roman',serif;font-style:italic">"An astronaut, doing handstand, undersea"</td>
+        <td width=22.2%><video muted autoplay="autoplay" loop="loop" src="assets/text-guided/handstand1.mp4" style="width: 100%; height: auto;"></video></td>
+        <td width=11.1%, style="text-align:center;vertical-align:middle;font-family:'Times New Roman',serif;font-style:italic">"A basketball player, doing moonwalk, on a basketball court"</td>
+        <td width=22.2%><video muted autoplay="autoplay" loop="loop" src="assets/text-guided/moonwalk1.mp4" style="width: 100%; height: auto;"></video></td>
+        <td width=11.1%, style="text-align:center;vertical-align:middle;font-family:'Times New Roman',serif;font-style:italic">"A soldier, saluting, in a military base"</td>
+        <td width=22.2%><video muted autoplay="autoplay" loop="loop" src="assets/text-guided/salute1.mp4" style="width: 100%; height: auto;"></video></td>
+      </tr>
+    </table>
+    <!-- End of text-guided avatar generation -->
+
+
+
+    <!-- Begin of video-guided avatar generation -->
+    <hr>
+    <center>
+      <h2 class="title is-4"><b style="color:#008AD7; font-weight:normal">&#x25B6 </b> Video-guided Avatar Generation</h2>
+      <p>
+        Given a source video, create avatar(s) that follows the given motion.
+      </p>
+    </center>
+
+    <hr>
+    <center>
+    <table class="center">
+      <tr>
+        <td width=16.5% style="text-align:center;">Source video</td>
+        <td width=16.5% style="text-align:center;">Motion</td>
+        <td width=16.5% style="text-align:center;">Generated video</td>
+        <td style="padding-left: 5px; padding-right: 5px;">
+        <td width=16.5% style="text-align:center;">Source video</td>
+        <td width=16.5% style="text-align:center;">Motion</td>
+        <td width=16.5% style="text-align:center;">Generated video</td>
+      </tr>
+    </table>
+    </center>
+
+    <table class="center">
+      <tr>
+        <td><video muted autoplay="autoplay" loop="loop" src="assets/video-guided/sample1_blur.mp4" style="width: 100%; height: auto;"></video></td>
+        <td style="padding-left: 5px; padding-right: 5px;">
+        <td><video muted autoplay="autoplay" loop="loop" src="assets/video-guided/sample3_blur.mp4" style="width: 100%; height: auto;"></video></td>
+      </tr>
+    </table>
+    <center>
+    <table class="center">
+      <tr>
+        <td width=50% style="text-align:center;font-family:'Times New Roman',serif;font-style:italic">"A boy running, red jacket"</td>
+        <td style="padding-left: 5px; padding-right: 5px;">
+        <td width=50% style="text-align:center;font-family:'Times New Roman',serif;font-style:italic">"A child, playing toy blocks"</td>
+      </tr>
+    </table>
+    </center>
+
+    <table class="center">
+      <tr>
+        <td><video muted autoplay="autoplay" loop="loop" src="assets/video-guided/sample5_blur.mp4" style="width: 100%; height: auto;"></video></td>
+        <td style="padding-left: 5px; padding-right: 5px;">
+        <td><video muted autoplay="autoplay" loop="loop" src="assets/video-guided/sample9_blur.mp4" style="width: 100%; height: auto;"></video></td>
+      </tr>
+    </table>
+    <center>
+    <table class="center">
+      <tr>
+        <td width=50% style="text-align:center;font-family:'Times New Roman',serif;font-style:italic">"A man, dancing under water"</td>
+        <td style="padding-left: 5px; padding-right: 5px;">
+        <td width=50% style="text-align:center;font-family:'Times New Roman',serif;font-style:italic">"A boy, freestyle singing, fire in the background"</td>
+      </tr>
+    </table>
+    </center>
+
+    <table class="center">
+      <tr>
+        <td><video muted autoplay="autoplay" loop="loop" src="assets/video-guided/sample11_blur.mp4" style="width: 100%; height: auto;"></video></td>
+        <td style="padding-left: 5px; padding-right: 5px;">
+        <td><video muted autoplay="autoplay" loop="loop" src="assets/video-guided/sample12_blur.mp4" style="width: 100%; height: auto;"></video></td>
+      </tr>
+    </table>
+    <center>
+    <table class="center">
+      <tr>
+        <td width=50% style="text-align:center;font-family:'Times New Roman',serif;font-style:italic">"A girl, in yellow clothes, walking on the road, raining"</td>
+        <td style="padding-left: 5px; padding-right: 5px;">
+        <td width=50% style="text-align:center;font-family:'Times New Roman',serif;font-style:italic">"A baby, in green clothes, dancing on the bed"</td>
+      </tr>
+    </table>
+    </center>
+    <!-- End of text-guided avatar generation -->
+
+    <!-- Begin of video-guided avatar generation (multi-person) -->
+    <!-- <hr>
+    <center>
+      <h2 class="title is-4"><b style="color:#008AD7; font-weight:normal">&#x25B6 </b> Video-guided Avatar Generation (multi-person)</h2>
+      <p>
+        Given a source video, create an avatar that follows the given motion.
+      </p>
+    </center> -->
+
+    <hr>
+    <center>
+    <table class="center">
+      <tr>
+        <td width=25% style="text-align:center;">Source video & Motion</td>
+        <td width=25% style="text-align:center;">Generated video</td>
+        <td style="padding-left: 5px; padding-right: 5px;"></td>
+        <td width=25% style="text-align:center;">Source video & Motion</td>
+        <td width=25% style="text-align:center;">Generated video</td>
+      </tr>
+    </table>
+    </center>
+
+    <table class="center">
+      <tr>
+        <td>
+          <div class="videoContainer">
+            <video class="mainVideo" muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/multi-sample1_src_blur.mp4"></video>
+            <video class="overlayVideo" muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/sample1-motion.mp4"></video>
+          </div>
+        </td>
+        <td><video muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/sample1-out.mp4"></video></td>
+        <td style="padding-left: 5px; padding-right: 5px;"></td>
+        <td>
+          <div class="videoContainer">
+            <video class="mainVideo" muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/multi-sample2_src_blur.mp4"></video>
+            <video class="overlayVideo" muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/sample2-motion.mp4"></video>
+          </div>
+        </td>
+        <td><video muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/sample2-out.mp4"></video></td>
+      </tr>
+    </table>
+    <center>
+    <table class="center">
+      <tr>
+        <td width=50% style="text-align:center;font-family:'Times New Roman',serif;font-style:italic">"Two people, Judo, on the fire"</td>
+        <td style="padding-left: 5px; padding-right: 5px;"></td>
+        <td width=50% style="text-align:center;font-family:'Times New Roman',serif;font-style:italic">"Four girls, dancing, nighttime, blue suits"</td>
+      </tr>
+    </table>
+    </center>
+
+    <table class="center">
+      <tr>
+        <td>
+          <div class="videoContainer">
+            <video class="mainVideo" muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/multi-sample3_src_blur.mp4"></video>
+            <video class="overlayVideo" muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/sample3-motion.mp4"></video>
+          </div>
+        </td>
+        <td><video muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/sample3-out.mp4"></video></td>
+        <td style="padding-left: 5px; padding-right: 5px;"></td>
+        <td>
+          <div class="videoContainer">
+            <video class="mainVideo" muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/multi-sample4_src_blur.mp4"></video>
+            <video class="overlayVideo" muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/sample4-motion.mp4"></video>
+          </div>
+        </td>
+        <td><video muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/sample4-out.mp4"></video></td>
+      </tr>
+    </table>
+    <center>
+    <table class="center">
+      <tr>
+        <td width=50% style="text-align:center;font-family:'Times New Roman',serif;font-style:italic">"Three girls, dancing, on the grassland"</td>
+        <td style="padding-left: 5px; padding-right: 5px;"></td>
+        <td width=50% style="text-align:center;font-family:'Times New Roman',serif;font-style:italic">"Girls dancing"</td>
+      </tr>
+    </table>
+    </center>
+
+    <table class="center">
+      <tr>
+        <td>
+          <div class="videoContainer">
+            <video class="mainVideo" muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/multi-sample5_src_blur.mp4"></video>
+            <video class="overlayVideo" muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/sample5-motion.mp4"></video>
+          </div>
+        </td>
+        <td><video muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/sample5-out.mp4"></video></td>
+        <td style="padding-left: 5px; padding-right: 5px;"></td>
+        <td>
+          <div class="videoContainer">
+            <video class="mainVideo" muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/sample6-src.mp4"></video>
+            <video class="overlayVideo" muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/sample6-motion.mp4"></video>
+          </div>
+        </td>
+        <td><video muted autoplay="autoplay" loop="loop" src="assets/video-guided/multi/sample6-out.mp4"></video></td>
+      </tr>
+    </table>
+    <center>
+    <table class="center">
+      <tr>
+        <td width=50% style="text-align:center;font-family:'Times New Roman',serif;font-style:italic">"Three girls, dancing, raining, flowers"</td>
+        <td style="padding-left: 5px; padding-right: 5px;"></td>
+        <td width=50% style="text-align:center;font-family:'Times New Roman',serif;font-style:italic">"Two persons, fencing, outdoor"</td>
+      </tr>
+    </table>
+    </center>    
+    <!-- End of video-guided avatar generation (multi-person) -->
+
+    <!-- Begin of video-guided avatar animation -->
+    <hr>
+    <center>
+      <h2 class="title is-4"><b style="color:#008AD7; font-weight:normal">&#x25B6 </b> Multimodal Avatar Animation</h2>
+      <p>
+        Animate an avatar of a specific subject.  
+      </p>
+    </center>
+    <hr>
+    <center>
+      <table class="center">
+        <tr>
+          <td width=12% style="text-align:center;">Identity</td>
+          <!-- <td style="padding-left: 2px; padding-right: 2px;"></td> -->
+          <td width=12% style="text-align:center;">Driving signal</td>
+          <td width=12% style="text-align:center;">Motion</td>
+          <td width=12% style="text-align:center;">Generated video</td>
+          <!-- <td style="padding-left: 2px; padding-right: 2px;"></td> -->
+          <td width=12% style="text-align:center;">Driving signal</td>
+          <td width=12% style="text-align:center;">Motion</td>
+          <td width=12% style="text-align:center;">Generated video</td>
+        </tr>
+      </table>
+    </center>
+    <table>
+      <tr>
+        <td width="14%"><video style="border: 1px solid #000000;" muted autoplay="autoplay" loop="loop" src="assets/animation/id2.mp4"></video></td>
+        <td style="padding-left: 1px; padding-right: 1px;"></td>
+        <td width=14%, style="text-align:center;vertical-align:middle;font-family:'Times New Roman',serif;font-style:italic">"A girl is dancing"</td>
+        <td width="28%"><video muted autoplay="autoplay" loop="loop" src="assets/animation/id2_1.mp4"></video></td>
+        <td style="padding-left: 1px; padding-right: 1px;"></td>
+        <td width=14%, style="text-align:center;vertical-align:middle;font-family:'Times New Roman',serif;font-style:italic">"A girl is waving hands"</td>
+        <td width="28%"><video muted autoplay="autoplay" loop="loop" src="assets/animation/id2_2.mp4"></video></td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td width="14%"><video style="border: 1px solid #000000;" muted autoplay="autoplay" loop="loop" src="assets/animation/id1.mp4"></video></td>
+        <td style="padding-left: 1px; padding-right: 1px;"></td>
+        <td width="42%"><video muted autoplay="autoplay" loop="loop" src="assets/animation/id1_1_blur.mp4"></video></td>
+        <td style="padding-left: 1px; padding-right: 1px;"></td>
+        <td width="42%"><video muted autoplay="autoplay" loop="loop" src="assets/animation/id1_2_blur.mp4"></video></td>
+      </tr>
+    </table>
+    <!-- End of video-guided avatar animation -->
+
+
+    <!-- Begin of audio-guided avatar generation -->
+    <hr>
+    <center>
+      <h2 class="title is-4"><b style="color:#008AD7; font-weight:normal">&#x25B6 </b> Audio-guided Avatar Generation (coming soon)</h2>
+      <p>
+        Create an avatar based on audio input.
+      </p>
+    </center>
+    <hr>
+    <!-- End of audio-guided avatar generation -->
+
+
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container content is-max-desktop">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{zhang2023magicavatar,
+    author = {Zhang, Jianfeng and Yan, Hanshu and Xu, Zhongcong and Feng, Jiashi and Liew, Jun Hao},
+    title = {MagicAvatar: Multi-modal Avatar Generation and Animation},
+    booktitle={arXiv},
+    year = {2023}
+}</code></pre>
+  </div>
+</section>
+
+<script type="text/javascript" src="./static/slick/slick.min.js"></script>
+</body>
+</html>
+
+<style>
+  .videoContainer {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .videoContainer video.mainVideo {
+    width: 100%;
+    height: auto;
+  }
+
+  .videoContainer video.overlayVideo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40%; /* Adjust this value to make video2 smaller or larger */
+  }
+</style>
